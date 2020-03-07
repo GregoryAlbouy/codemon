@@ -1,0 +1,123 @@
+@import 'settings';
+
+.combat__field
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // cursor: grab;
+    perspective: $perspective-size;
+    perspective-origin: $perspective-origin--x $perspective-origin--y;
+    // transform-style: preserve-3d;
+
+    .room
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: $room-pov;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+    }
+
+    .animation--room-apparition
+    {
+        animation: room-apparition--v2 $room-animation-duration cubic-bezier(0.6, 0.5, 0.3, 1) both;
+        will-change: transform;
+    }
+
+    .room-side
+    {
+        position: absolute;
+        top: calc(50% - #{$room-size/2});
+        left: calc(50% - #{$room-size/2});
+        width: $room-size;
+        height: $room-size;
+        background: #CCC;
+        // backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+    
+    .room-side--ground
+    {
+        border-radius: 50%;
+        background:
+            linear-gradient(to bottom, #CCC 0%, 4%, transparent 4%) top / 100% 10rem repeat-y,
+            linear-gradient(to right, #CCC 0%, 4%, transparent 4%) left / 10rem 100% repeat-x,
+            linear-gradient(#999, #999);
+        box-shadow: inset 0 0 10rem 10rem #222;
+        transform: rotateX(90deg) translateZ(-$room-size/2);
+    }
+
+
+    .missingno
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:
+            translate3d($missingno-x, $missingno-y, $missingno-z)
+            rotateY(-45deg);
+        transform-style: preserve-3d;
+
+
+        .face
+        {
+            position: absolute;
+            top: calc(50% - #{$missingno-height / 2});
+            left: calc(50% - #{$missingno-width / 2});
+            width: $missingno-width;
+            height: $missingno-height;
+            background: url('../images/missingno.svg') center / contain no-repeat;
+        }
+        .face--back
+        {
+            background:
+                linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+                url("../images/missingno.svg") center/contain no-repeat;
+        }
+        .face--left
+        {
+            background:
+                linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
+                url('../images/missingno.svg') center / contain no-repeat;
+        }
+
+        /* 3D positionning */
+        .face--front { transform: rotateY(0deg) translateZ($missingno-width / 2); }
+        .face--back { transform: rotateY(180deg) translateZ($missingno-width / 2); }
+        .face--left { transform: rotateY(-90deg) translateZ(-$missingno-width / 2); }
+        .face--right { transform: rotateY(90deg) translateZ(-$missingno-width / 2); }
+    }
+
+    /* shadow v3 */
+    .missingno-shadow
+    {
+        $size: 10rem;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        transform: translate3d(27rem, 60rem, -27rem);
+        transform-style: preserve-3d;
+
+        .animation--shadow
+        { animation: shadow2 2s linear alternate infinite both; }
+
+        .shadow-face
+        {
+            @include absolute-center($size, $size);
+            width: $size;
+            height: $size;
+            background: radial-gradient(#333, transparent 90%);
+            border-radius: 40%;
+            transform: rotateX(-90deg);
+            transform-style: preserve-3d;
+        }
+
+    }
+
+    // .animation--shadow {  }
+}

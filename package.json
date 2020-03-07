@@ -1,0 +1,21 @@
+{
+  "name": "codemon",
+  "version": "1.0.0",
+  "description": "Creative experience",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass-watch": "sass --watch resources/scss/main.scss public/css/main.css",
+    "sass-compile": "sass resources/scss/main.scss public/css/main.css",
+    "sass-prod": "sass --no-source-map --style=compressed resources/scss/main.scss public/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GregoryAlbouy/codemon.git"
+  },
+  "author": "Gregory Albouy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GregoryAlbouy/codemon/issues"
+  },
+  "homepage": "https://github.com/GregoryAlbouy/codemon#readme"
+}
