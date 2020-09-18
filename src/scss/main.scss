@@ -1,0 +1,42 @@
+
+@use 'desktop';
+@use 'general';
+@use 'combatField';
+@use 'combatInterface';
+@use 'keyframes';
+
+@media (max-width: 640px)
+{
+    html { font-size: 8px; }
+    .combat__interface
+    {
+        .action-menu,
+        .action-submenu,
+        .dialog-area
+        {
+            width: 50%;
+        }
+    }
+}
+@media (max-width: 520px)
+{
+    html { font-size: 7px; }
+    .combat__field .room { transform: translate3d(10rem, -60rem, 20rem) rotateX(-20deg) rotateY(40deg); }
+}
+// @media (max-width: 380px)
+// {
+    
+// }
+@media (prefers-color-scheme: light)
+{
+    .combat .combat__interface
+    {
+        .action-btn,
+        .action-submenu,
+        .dialog-area
+        {
+        background: #CCC;
+        color: #333
+        }
+    }
+}
